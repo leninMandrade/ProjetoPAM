@@ -1,7 +1,5 @@
 ﻿using PAM.Domain.Albums;
 using PAM.Infra.Data;
-using System.Diagnostics.Metrics;
-using System.Diagnostics;
 
 namespace PAM.Endpoints.Albums;
 

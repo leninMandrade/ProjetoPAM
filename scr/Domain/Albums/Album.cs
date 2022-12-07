@@ -3,7 +3,7 @@
 public class Album : Entity
 {
     public int Tracks { get; set; }
-    public TimeSpan Lenght { get; set; }
+    public TimeSpan Lenght { get; set; }    
 
     public Album()
     {

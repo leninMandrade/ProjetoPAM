@@ -6,8 +6,8 @@ public abstract class Entity // Se alterar essa classe, precisa criar uma nova m
     public string Author { get; set; } // Todos
     public string Name { get; set; } // Todos
     public DateTime ReleaseDate { get; set; } // Todos
-    public string Genre { get; set; } // Todos - Transformar em lista de gêneros e criar a classe de gêneros
-    public string Country { get; set; } // Todos - Criar uma classe para países
+    public string Genre { get; set; } // Todos - Integrar a classe de gênero
+    public string Country { get; set; } // Todos - Integrar a classe de países e continentes   
 
     public Entity()
     {
