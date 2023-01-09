@@ -25,6 +25,6 @@ public class AlbumPost
         context.Albums.Add(album);
         context.SaveChanges();
 
-        return Results.Created($"/categories/{album.Id}", album.Id);
+        return Results.Created($"/albums/{album.Id}", album.Id);
     }
 }
