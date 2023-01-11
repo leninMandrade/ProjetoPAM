@@ -12,7 +12,7 @@ public class BookGetByIdDetailed
 
     public static IResult Action([FromRoute] Guid Id, ApplicationDbContext context)
     {
-        var search = context.Books.Where(x => x.Id == Id).FirstOrDefault();
+        var search = context.Books.FirstOrDefault(x => x.Id == Id);
 
         return Results.Ok(search);
     }

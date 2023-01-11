@@ -1,13 +1,16 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PAM.Domain.Albums;
 using PAM.Domain.Books;
+using PAM.Domain.Games;
 
 namespace PAM.Infra.Data
 {
     public class ApplicationDbContext : DbContext //Herança da classe de contexto do Banco de Dados
     {
         public DbSet<Album> Albums { get; set; } // Criação da tabela da classe Album no banco de dados
-        public DbSet<Book> Books { get; set; } // Criação da tabela da classe Book no banco de dados       
+        public DbSet<Book> Books { get; set; } // Criação da tabela da classe Book no banco de dados
+        public DbSet<Game> Games { get; set; } // Criação da tabela da classe Book no banco de dados
+
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) // Herança das opções de configuração da base de dados
         {

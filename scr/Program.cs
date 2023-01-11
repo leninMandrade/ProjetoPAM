@@ -1,5 +1,6 @@
 using PAM.Endpoints.Albums;
 using PAM.Endpoints.Books;
+using PAM.Endpoints.Games;
 using PAM.Infra.Data;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -34,5 +35,13 @@ app.MapMethods(BookGetByIdDetailed.Template, BookGetByIdDetailed.Methods, BookGe
 app.MapMethods(BookGetByIdResumed.Template, BookGetByIdResumed.Methods, BookGetByIdResumed.Handle);
 app.MapMethods(BookPut.Template, BookPut.Methods, BookPut.Handle);
 app.MapMethods(BookDelete.Template, BookDelete.Methods, BookDelete.Handle);
+
+app.MapMethods(GamePost.Template, GamePost.Methods, GamePost.Handle);
+app.MapMethods(GameGetAll.Template, GameGetAll.Methods, GameGetAll.Handle);
+app.MapMethods(GameGetAllResumed.Template, GameGetAllResumed.Methods, GameGetAllResumed.Handle);
+app.MapMethods(GameGetByIdDetailed.Template, GameGetByIdDetailed.Methods, GameGetByIdDetailed.Handle);
+app.MapMethods(GameGetByIdResumed.Template, GameGetByIdResumed.Methods, GameGetByIdResumed.Handle);
+app.MapMethods(GamePut.Template, GamePut.Methods, GamePut.Handle);
+app.MapMethods(GameDelete.Template, GameDelete.Methods, GameDelete.Handle);
 
 app.Run();

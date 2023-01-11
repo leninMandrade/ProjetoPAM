@@ -11,8 +11,14 @@ public class AlbumGetByIdResumed
 
     public static IResult Action([FromRoute] Guid Id, ApplicationDbContext context)
     {
-        var search = context.Albums.Where(x => x.Id == Id).FirstOrDefault();
-        var result = new AlbumResponse { Author = search.Author, Name = search.Name, Genre = search.Genre };
+        var search = context.Albums.FirstOrDefault(x => x.Id == Id);
+
+        var result = new AlbumResponse 
+        { 
+            Author = search.Author, 
+            Name = search.Name, 
+            Genre = search.Genre 
+        };
 
         return Results.Ok(result);
     }

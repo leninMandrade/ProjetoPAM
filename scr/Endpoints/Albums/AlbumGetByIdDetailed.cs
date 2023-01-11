@@ -11,8 +11,8 @@ public class AlbumGetByIdDetailed
 
     public static IResult Action([FromRoute] Guid Id, ApplicationDbContext context)
     {
-        var result = context.Albums.Where(x => x.Id == Id).FirstOrDefault();
+        var search = context.Albums.FirstOrDefault(x => x.Id == Id);
                 
-        return Results.Ok(result);
+        return Results.Ok(search);
     }
 }

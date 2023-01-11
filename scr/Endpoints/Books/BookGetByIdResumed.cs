@@ -12,8 +12,14 @@ public class BookGetByIdResumed
 
     public static IResult Action([FromRoute] Guid Id, ApplicationDbContext context)
     {
-        var search = context.Books.Where(x => x.Id == Id).FirstOrDefault();
-        var result = new BookResponse { Author = search.Author, Title = search.Name, Publisher = search.Publisher };
+        var search = context.Books.FirstOrDefault(x => x.Id == Id);
+
+        var result = new BookResponse 
+        { 
+            Author = search.Author, 
+            Title = search.Name, 
+            Publisher = search.Publisher 
+        };
 
         return Results.Ok(result);
     }

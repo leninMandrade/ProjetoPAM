@@ -11,7 +11,7 @@ public class AlbumDelete
 
     public static IResult Action([FromRoute] Guid id, ApplicationDbContext context)
     {
-        var search = context.Albums.Where(x => x.Id == id).FirstOrDefault();
+        var search = context.Albums.FirstOrDefault(x => x.Id == id);
 
         context.Albums.Remove(search);
         context.SaveChanges();

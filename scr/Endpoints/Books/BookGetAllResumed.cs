@@ -11,7 +11,12 @@ public class BookGetAllResumed
     public static IResult Action(ApplicationDbContext context)
     {
         var search = context.Books.ToList();
-        var result = search.Select(x => new BookResponse {Author = x.Author, Title = x.Name, Publisher = x.Publisher }).ToList();
+        var result = search.Select(x => new BookResponse
+        {
+            Author = x.Author,
+            Title = x.Name,
+            Publisher = x.Publisher
+        });
 
         return Results.Ok(result);
     }

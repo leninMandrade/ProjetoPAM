@@ -10,9 +10,14 @@ public class AlbumGetAllResumed
 
     public static IResult Action(ApplicationDbContext context)
     {
-        var results = context.Albums.ToList();
-        var response = results.Select(p => new AlbumResponse { Author = p.Author, Name = p.Name, Genre = p.Genre });
+        var search = context.Albums.ToList();
+        var result = search.Select(x => new AlbumResponse 
+        { 
+            Author = x.Author, 
+            Name = x.Name, 
+            Genre = x.Genre
+        });
 
-        return Results.Ok(response);
+        return Results.Ok(result);
     }
 }

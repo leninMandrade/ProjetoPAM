@@ -10,9 +10,9 @@ namespace PAM.Endpoints.Albums
 
         public static IResult Action(ApplicationDbContext context)
         {
-            var results = context.Albums.ToList();
+            var search = context.Albums.ToList();
 
-            return Results.Ok(results);
+            return Results.Ok(search);
         }
     }
 }

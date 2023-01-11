@@ -14,7 +14,7 @@ public class AlbumPut
 
     public static IResult Action([FromRoute] Guid Id, AlbumRequest request, ApplicationDbContext context)
     {
-        var search = context.Albums.Where(x => x.Id == Id).FirstOrDefault();
+        var search = context.Albums.FirstOrDefault(x => x.Id == Id);
 
         search.Author = request.Artist;
         search.Name = request.AlbumName;

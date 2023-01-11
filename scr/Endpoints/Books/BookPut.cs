@@ -13,7 +13,7 @@ public class BookPut
 
     public static IResult Action([FromRoute] Guid Id, BookRequest bookRequest, ApplicationDbContext context)
     {
-        var search = context.Books.Where(x => x.Id == Id).FirstOrDefault();
+        var search = context.Books.FirstOrDefault(x => x.Id == Id);
 
         search.Author = bookRequest.Author;
         search.Name = bookRequest.BookName;
