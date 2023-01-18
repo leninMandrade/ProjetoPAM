@@ -1,8 +1,10 @@
-﻿namespace PAM.Domain;
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace PAM.Domain;
 
 public abstract class Entity // Se alterar essa classe, precisa criar uma nova migration pra atualizar o BD
 {
-    public Guid Id { get; set; } // Todos
+    public Guid Id { get; set; } // Todos    
     public string Author { get; set; } // Todos
     public string Name { get; set; } // Todos
     public DateTime ReleaseDate { get; set; } // Todos

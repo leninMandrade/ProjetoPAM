@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PAM.Infra.Data;
 
@@ -11,9 +12,11 @@ using PAM.Infra.Data;
 namespace PAM.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230118002554_Configurando as propriedades de Albums")]
+    partial class ConfigurandoaspropriedadesdeAlbums
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -41,14 +44,14 @@ namespace PAM.Migrations
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)")
                         .HasColumnName("País")
-                        .HasColumnOrder(5);
+                        .HasColumnOrder(4);
 
                     b.Property<string>("Genre")
                         .IsRequired()
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)")
                         .HasColumnName("Gênero")
-                        .HasColumnOrder(4);
+                        .HasColumnOrder(3);
 
                     b.Property<TimeSpan>("Lenght")
                         .HasColumnType("time")
@@ -71,7 +74,7 @@ namespace PAM.Migrations
                         .HasMaxLength(1000)
                         .HasColumnType("int")
                         .HasColumnName("Nº de Faixas")
-                        .HasColumnOrder(3);
+                        .HasColumnOrder(5);
 
                     b.HasKey("Id");
 
@@ -82,54 +85,39 @@ namespace PAM.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
-                        .HasColumnOrder(0);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Author")
                         .IsRequired()
                         .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)")
-                        .HasColumnName("Autor")
-                        .HasColumnOrder(2);
+                        .HasColumnType("nvarchar(200)");
 
                     b.Property<string>("Country")
                         .IsRequired()
                         .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)")
-                        .HasColumnName("País")
-                        .HasColumnOrder(6);
+                        .HasColumnType("nvarchar(200)");
 
                     b.Property<string>("Genre")
                         .IsRequired()
                         .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)")
-                        .HasColumnName("Gênero")
-                        .HasColumnOrder(5);
+                        .HasColumnType("nvarchar(200)");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)")
-                        .HasColumnName("Título")
-                        .HasColumnOrder(1);
+                        .HasColumnType("nvarchar(200)");
 
                     b.Property<int>("Pages")
                         .HasMaxLength(1000)
-                        .HasColumnType("int")
-                        .HasColumnName("Nº de Páginas")
-                        .HasColumnOrder(4);
+                        .HasColumnType("int");
 
                     b.Property<string>("Publisher")
                         .IsRequired()
                         .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)")
-                        .HasColumnName("Editora")
-                        .HasColumnOrder(3);
+                        .HasColumnType("nvarchar(200)");
 
                     b.Property<DateTime>("ReleaseDate")
-                        .HasColumnType("datetime2")
-                        .HasColumnName("Ano de Lançamento")
-                        .HasColumnOrder(7);
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
@@ -140,60 +128,43 @@ namespace PAM.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
-                        .HasColumnOrder(0);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Author")
                         .IsRequired()
                         .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)")
-                        .HasColumnName("Desenvolvedora")
-                        .HasColumnOrder(2);
+                        .HasColumnType("nvarchar(200)");
 
                     b.Property<string>("Country")
                         .IsRequired()
                         .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)")
-                        .HasColumnName("País")
-                        .HasColumnOrder(6);
+                        .HasColumnType("nvarchar(200)");
 
                     b.Property<string>("Genre")
                         .IsRequired()
                         .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)")
-                        .HasColumnName("Gênero")
-                        .HasColumnOrder(5);
+                        .HasColumnType("nvarchar(200)");
 
                     b.Property<bool>("Multiplayer")
-                        .HasColumnType("bit")
-                        .HasColumnName("Multiplayer")
-                        .HasColumnOrder(8);
+                        .HasColumnType("bit");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)")
-                        .HasColumnName("Título")
-                        .HasColumnOrder(1);
+                        .HasColumnType("nvarchar(200)");
 
                     b.Property<string>("Platform")
                         .IsRequired()
                         .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)")
-                        .HasColumnName("Plataformas")
-                        .HasColumnOrder(4);
+                        .HasColumnType("nvarchar(200)");
 
                     b.Property<string>("Publisher")
                         .IsRequired()
                         .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)")
-                        .HasColumnName("Editora")
-                        .HasColumnOrder(3);
+                        .HasColumnType("nvarchar(200)");
 
                     b.Property<DateTime>("ReleaseDate")
-                        .HasColumnType("datetime2")
-                        .HasColumnName("Ano de Lançamento")
-                        .HasColumnOrder(7);
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
