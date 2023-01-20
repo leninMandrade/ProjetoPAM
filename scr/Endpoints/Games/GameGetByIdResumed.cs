@@ -1,8 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using PAM.Infra.Data;
-
-namespace PAM.Endpoints.Games;
+﻿namespace PAM.Endpoints.Games;
 
 public class GameGetByIdResumed
 {

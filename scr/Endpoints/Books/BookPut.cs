@@ -1,9 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using PAM.Infra.Data;
-using System.Diagnostics.Metrics;
-
-namespace PAM.Endpoints.Books;
+﻿namespace PAM.Endpoints.Books;
 
 public class BookPut
 {

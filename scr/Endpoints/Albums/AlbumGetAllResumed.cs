@@ -1,6 +1,4 @@
-﻿using PAM.Infra.Data;
-
-namespace PAM.Endpoints.Albums;
+﻿namespace PAM.Endpoints.Albums;
 
 public class AlbumGetAllResumed
 {

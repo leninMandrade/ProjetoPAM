@@ -1,6 +1,4 @@
-﻿using PAM.Infos.GenresInfo;
-
-namespace PAM.Infos.GeoInfo;
+﻿namespace PAM.Infos.GeoInfo;
 
 public class Nation
 {

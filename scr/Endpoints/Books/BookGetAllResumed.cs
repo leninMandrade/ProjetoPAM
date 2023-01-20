@@ -1,6 +1,4 @@
-﻿using PAM.Infra.Data;
-
-namespace PAM.Endpoints.Books;
+﻿namespace PAM.Endpoints.Books;
 
 public class BookGetAllResumed
 {

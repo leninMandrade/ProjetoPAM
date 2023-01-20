@@ -1,8 +1,3 @@
-using PAM.Endpoints.Albums;
-using PAM.Endpoints.Books;
-using PAM.Endpoints.Games;
-using PAM.Infra.Data;
-
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddEndpointsApiExplorer();

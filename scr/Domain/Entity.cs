@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace PAM.Domain;
+﻿namespace PAM.Domain;
 
 public abstract class Entity // Se alterar essa classe, precisa criar uma nova migration pra atualizar o BD
 {

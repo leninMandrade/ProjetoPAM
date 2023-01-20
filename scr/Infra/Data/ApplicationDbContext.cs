@@ -1,9 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using PAM.Domain.Albums;
-using PAM.Domain.Books;
-using PAM.Domain.Games;
-
-namespace PAM.Infra.Data
+﻿namespace PAM.Infra.Data
 {
     public class ApplicationDbContext : DbContext //Herança da classe de contexto do Banco de Dados
     {

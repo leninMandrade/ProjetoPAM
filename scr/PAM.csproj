@@ -1,10 +1,23 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
+
+	<ItemGroup>
+		<Using Include="Microsoft.EntityFrameworkCore" />
+		<Using Include="Microsoft.AspNetCore.Mvc" />
+		<Using Include="PAM.Infra.Data" />
+
+		<Using Include="PAM.Domain.Albums" />
+		<Using Include="PAM.Domain.Books" />
+		<Using Include="PAM.Domain.Games" />
+		<Using Include="PAM.Endpoints.Games" />
+		<Using Include="PAM.Endpoints.Books" />
+		<Using Include="PAM.Endpoints.Albums" />	
+	</ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.0" />

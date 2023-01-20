@@ -1,7 +1,4 @@
-﻿using PAM.Endpoints.Books;
-using PAM.Infra.Data;
-
-namespace PAM.Endpoints.Games;
+﻿namespace PAM.Endpoints.Games;
 
 public class GameGetAll
 {

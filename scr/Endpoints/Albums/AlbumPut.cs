@@ -1,11 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using PAM.Domain.Albums;
-using PAM.Infra.Data;
-using System.Diagnostics.Metrics;
-using System.Diagnostics;
-using Microsoft.EntityFrameworkCore;
-
-namespace PAM.Endpoints.Albums;
+﻿namespace PAM.Endpoints.Albums;
 
 public class AlbumPut
 {
