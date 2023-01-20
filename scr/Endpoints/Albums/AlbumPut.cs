@@ -3,6 +3,7 @@ using PAM.Domain.Albums;
 using PAM.Infra.Data;
 using System.Diagnostics.Metrics;
 using System.Diagnostics;
+using Microsoft.EntityFrameworkCore;
 
 namespace PAM.Endpoints.Albums;
 
@@ -12,9 +13,9 @@ public class AlbumPut
     public static string[] Methods => new string[] { HttpMethod.Put.ToString() };
     public static Delegate Handle => Action;
 
-    public static IResult Action([FromRoute] Guid Id, AlbumRequest request, ApplicationDbContext context)
+    public static async Task<IResult> Action([FromRoute] Guid Id, AlbumRequest request, ApplicationDbContext context)
     {
-        var search = context.Albums.FirstOrDefault(x => x.Id == Id);
+        var search = await context.Albums.FirstOrDefaultAsync(x => x.Id == Id);
 
         search.Author = request.Artist;
         search.Name = request.AlbumName;
@@ -23,7 +24,7 @@ public class AlbumPut
         search.Genre = request.Genre;
         search.Country = request.Country;
 
-        context.SaveChanges();
+        await context.SaveChangesAsync();
 
         return Results.Accepted();
     }

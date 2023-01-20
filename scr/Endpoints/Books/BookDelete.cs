@@ -10,12 +10,12 @@ public class BookDelete
     public static string[] Methods => new string[] { HttpMethod.Delete.ToString() };
     public static Delegate Handle => Action;
 
-    public static IResult Action([FromRoute] Guid Id, ApplicationDbContext context)
+    public static async Task<IResult> Action([FromRoute] Guid Id, ApplicationDbContext context)
     {
-        var search =  context.Books.FirstOrDefault(x => x.Id == Id);
+        var search = await context.Books.FirstOrDefaultAsync(x => x.Id == Id);
 
         context.Books.Remove(search);
-        context.SaveChanges();
+        await context.SaveChangesAsync();
 
         return Results.Ok();
     }

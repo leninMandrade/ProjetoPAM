@@ -9,7 +9,7 @@ public class GamePost
     public static string[] Methods => new string[] { HttpMethod.Post.ToString() };
     public static Delegate Handle => Action;
 
-    public static IResult Action(GameRequest request, ApplicationDbContext context)
+    public static async Task<IResult> Action(GameRequest request, ApplicationDbContext context)
     {
         var game = new Game
         {
@@ -24,7 +24,7 @@ public class GamePost
         };
 
         context.Games.Add(game);
-        context.SaveChanges();
+        await context.SaveChangesAsync();
 
         return Results.Created($"/games/{game.Id}", game.Id);
     }    

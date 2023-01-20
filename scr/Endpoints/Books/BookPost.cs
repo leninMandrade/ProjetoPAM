@@ -9,7 +9,7 @@ namespace PAM.Endpoints.Books
         public static string[] Methods => new string[] { HttpMethod.Post.ToString() };
         public static Delegate Handle => Action;
 
-        public static IResult Action(BookRequest bookRequest, ApplicationDbContext context)
+        public static async Task<IResult> Action(BookRequest bookRequest, ApplicationDbContext context)
         {
             var book = new Book
             {
@@ -23,7 +23,7 @@ namespace PAM.Endpoints.Books
             };
 
             context.Books.Add(book);
-            context.SaveChanges();
+            await context.SaveChangesAsync();
 
             return Results.Created($"/books/{book.Id}", book.Id);
         }

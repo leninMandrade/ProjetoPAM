@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using PAM.Domain.Games;
 using PAM.Infra.Data;
 
@@ -10,9 +11,9 @@ public class GamePut
     public static string[] Methods => new string[] { HttpMethod.Put.ToString() };
     public static Delegate Handle => Action;
 
-    public static IResult Action([FromRoute] Guid Id, GameRequest request, ApplicationDbContext context)
+    public static async Task<IResult> Action([FromRoute] Guid Id, GameRequest request, ApplicationDbContext context)
     {
-        var search = context.Games.FirstOrDefault(x => x.Id == Id);
+        var search = await context.Games.FirstOrDefaultAsync(x => x.Id == Id);
 
         search.Name = request.Name;
         search.Author = request.Developer;
@@ -24,7 +25,7 @@ public class GamePut
         search.Country = request.Country;
 
 
-        context.SaveChanges();
+        await context.SaveChangesAsync();
 
         return Results.Accepted();
     }

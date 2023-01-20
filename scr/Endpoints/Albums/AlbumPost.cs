@@ -9,7 +9,7 @@ public class AlbumPost
     public static string[] Methods => new string[] { HttpMethod.Post.ToString() };
     public static Delegate Handle => Action;
 
-    public static IResult Action(AlbumRequest albumRequest, ApplicationDbContext context)
+    public static async Task<IResult> Action(AlbumRequest albumRequest, ApplicationDbContext context)
     {
         var album = new Album
         {
@@ -23,7 +23,7 @@ public class AlbumPost
         };
 
         context.Albums.Add(album);
-        context.SaveChanges();
+        await context.SaveChangesAsync();
 
         return Results.Created($"/albums/{album.Id}", album.Id);
     }

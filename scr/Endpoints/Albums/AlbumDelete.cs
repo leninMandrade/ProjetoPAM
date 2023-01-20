@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using PAM.Infra.Data;
 
 namespace PAM.Endpoints.Albums;
@@ -9,12 +10,12 @@ public class AlbumDelete
     public static string[] Methods => new string[] { HttpMethod.Delete.ToString() };
     public static Delegate Handle => Action;
 
-    public static IResult Action([FromRoute] Guid id, ApplicationDbContext context)
+    public static async Task<IResult> Action([FromRoute] Guid id, ApplicationDbContext context)
     {
-        var search = context.Albums.FirstOrDefault(x => x.Id == id);
+        var search = await context.Albums.FirstOrDefaultAsync(x => x.Id == id);
 
         context.Albums.Remove(search);
-        context.SaveChanges();
+        await context.SaveChangesAsync();
         return Results.Ok();
     }
 }

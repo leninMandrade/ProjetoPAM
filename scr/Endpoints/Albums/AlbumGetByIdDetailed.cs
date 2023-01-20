@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using PAM.Infra.Data;
 
 namespace PAM.Endpoints.Albums;
@@ -9,9 +10,9 @@ public class AlbumGetByIdDetailed
     public static string[] Methods => new string[] { HttpMethod.Get.ToString() };
     public static Delegate Handle => Action;
 
-    public static IResult Action([FromRoute] Guid Id, ApplicationDbContext context)
+    public static async Task<IResult> Action([FromRoute] Guid Id, ApplicationDbContext context)
     {
-        var search = context.Albums.FirstOrDefault(x => x.Id == Id);
+        var search = await context.Albums.FirstOrDefaultAsync(x => x.Id == Id);
                 
         return Results.Ok(search);
     }

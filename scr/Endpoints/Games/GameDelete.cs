@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using PAM.Infra.Data;
 
 namespace PAM.Endpoints.Games;
@@ -9,12 +10,12 @@ public class GameDelete
     public static string[] Methods => new string[] { HttpMethod.Delete.ToString() };
     public static Delegate Handle => Action;
 
-    public static IResult Action([FromRoute] Guid Id, ApplicationDbContext context)
+    public static async Task<IResult> Action([FromRoute] Guid Id, ApplicationDbContext context)
     {
-        var search = context.Games.FirstOrDefault(x => x.Id == Id);
+        var search = await context.Games.FirstOrDefaultAsync(x => x.Id == Id);
 
         context.Games.Remove(search);
-        context.SaveChanges();
+        await context.SaveChangesAsync();
 
         return Results.Accepted();
     }
