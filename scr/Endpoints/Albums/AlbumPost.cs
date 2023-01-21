@@ -7,7 +7,7 @@ public class AlbumPost
     public static Delegate Handle => Action;
 
     public static async Task<IResult> Action(AlbumRequest albumRequest, ApplicationDbContext context)
-    {
+    {       
         var album = new Album
         {
             Author = albumRequest.Artist,
