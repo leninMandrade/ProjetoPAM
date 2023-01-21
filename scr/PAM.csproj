@@ -8,9 +8,10 @@
 
 	<ItemGroup>
 		<Using Include="Microsoft.EntityFrameworkCore" />
-		<Using Include="Microsoft.AspNetCore.Mvc" />
-		<Using Include="PAM.Infra.Data" />
+		<Using Include="Microsoft.AspNetCore.Mvc" />		
+		<Using Include="Flunt.Notifications" />
 
+		<Using Include="PAM.Infra.Data" />
 		<Using Include="PAM.Domain.Albums" />
 		<Using Include="PAM.Domain.Books" />
 		<Using Include="PAM.Domain.Games" />

@@ -7,7 +7,20 @@ public class AlbumPost
     public static Delegate Handle => Action;
 
     public static async Task<IResult> Action(AlbumRequest albumRequest, ApplicationDbContext context)
-    {       
+    {
+        if (string.IsNullOrEmpty(albumRequest.Artist) || string.IsNullOrWhiteSpace(albumRequest.Artist) || albumRequest.Artist.Length < 3)
+        {
+            return Results.BadRequest("Informe um artista válido.");
+        }
+        if (string.IsNullOrEmpty(albumRequest.AlbumName) || string.IsNullOrWhiteSpace(albumRequest.AlbumName) || albumRequest.AlbumName.Length < 3)
+        {
+            return Results.BadRequest("Informe um album válido.");
+        }
+        if (albumRequest.TracksNumbers <= 0)
+        {
+            return Results.BadRequest("Informe uma quantidade válida de faixas.");
+        }
+
         var album = new Album
         {
             Author = albumRequest.Artist,
@@ -19,7 +32,7 @@ public class AlbumPost
             Country = albumRequest.Country
         };
 
-        context.Albums.Add(album);
+        await context.Albums.AddAsync(album);
         await context.SaveChangesAsync();
 
         return Results.Created($"/albums/{album.Id}", album.Id);
