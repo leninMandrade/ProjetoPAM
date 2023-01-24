@@ -2,6 +2,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSqlServer<ApplicationDbContext>(builder.Configuration["ConnectionString:PAMDb"]);
+builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
