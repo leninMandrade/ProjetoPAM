@@ -2,7 +2,12 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSqlServer<ApplicationDbContext>(builder.Configuration["ConnectionString:PAMDb"]);
-builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>();
+builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
+{
+    options.Password.RequireNonAlphanumeric = false;
+    options.Password.RequireUppercase = false;
+    
+}).AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
@@ -39,5 +44,7 @@ app.MapMethods(GameGetByIdDetailed.Template, GameGetByIdDetailed.Methods, GameGe
 app.MapMethods(GameGetByIdResumed.Template, GameGetByIdResumed.Methods, GameGetByIdResumed.Handle);
 app.MapMethods(GamePut.Template, GamePut.Methods, GamePut.Handle);
 app.MapMethods(GameDelete.Template, GameDelete.Methods, GameDelete.Handle);
+
+app.MapMethods(EmployeePost.Template, EmployeePost.Methods, EmployeePost.Handle);
 
 app.Run();
