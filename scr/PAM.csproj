@@ -19,7 +19,7 @@
 		<Using Include="PAM.Endpoints.Games" />
 		<Using Include="PAM.Endpoints.Books" />
 		<Using Include="PAM.Endpoints.Albums" />
-		<Using Include="PAM.Endpoints.Employees" />
+		<Using Include="PAM.Endpoints.Managers" />
 	</ItemGroup>
 
   <ItemGroup>
