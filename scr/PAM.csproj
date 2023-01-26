@@ -10,6 +10,7 @@
 		<Using Include="Microsoft.EntityFrameworkCore" />
 		<Using Include="Microsoft.AspNetCore.Identity" />
 		<Using Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" />
+		<Using Include="System.Security.Claims" />		
 		<Using Include="Microsoft.AspNetCore.Mvc" />		
 
 		<Using Include="PAM.Infra.Data" />

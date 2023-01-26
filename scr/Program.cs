@@ -46,5 +46,6 @@ app.MapMethods(GamePut.Template, GamePut.Methods, GamePut.Handle);
 app.MapMethods(GameDelete.Template, GameDelete.Methods, GameDelete.Handle);
 
 app.MapMethods(ManagerPost.Template, ManagerPost.Methods, ManagerPost.Handle);
+app.MapMethods(ManagerGetAll.Template, ManagerGetAll.Methods, ManagerGetAll.Handle);
 
 app.Run();

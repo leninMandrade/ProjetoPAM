@@ -1,6 +1,4 @@
-﻿using System.Security.Claims;
-
-namespace PAM.Endpoints.Managers;
+﻿namespace PAM.Endpoints.Managers;
 
 public class ManagerPost
 {
