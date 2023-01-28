@@ -11,7 +11,11 @@
 		<Using Include="Microsoft.AspNetCore.Identity" />
 		<Using Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" />
 		<Using Include="System.Security.Claims" />		
-		<Using Include="Microsoft.AspNetCore.Mvc" />		
+		<Using Include="Microsoft.AspNetCore.Mvc" />
+		<Using Include="System.Text" />
+		<Using Include="Microsoft.IdentityModel.Tokens" />
+		<Using Include="System.IdentityModel.Tokens.Jwt" />
+		<Using Include="Microsoft.AspNetCore.Authentication.JwtBearer"/>
 
 		<Using Include="PAM.Infra.Data" />
 		<Using Include="PAM.Domain.Albums" />
@@ -21,9 +25,11 @@
 		<Using Include="PAM.Endpoints.Books" />
 		<Using Include="PAM.Endpoints.Albums" />
 		<Using Include="PAM.Endpoints.Managers" />
+		<Using Include="PAM.Endpoints.Security" />
 	</ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="7.0.2" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="7.0.2" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.2" />
