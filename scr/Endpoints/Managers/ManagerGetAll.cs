@@ -6,6 +6,7 @@ public class ManagerGetAll
     public static string[] Methods => new[] { HttpMethod.Get.ToString() };
     public static Delegate Handle => Action;
 
+    [Authorize(Policy = "ManagerPolicy")]
     public static async Task<IResult> Action(UserManager<IdentityUser> users)
     {
         var search = users.Users.ToList();
@@ -23,7 +24,7 @@ public class ManagerGetAll
 
             managers.Add(new ManagerResponse(userName, userCode, item.Email));
         }
-        
+
         return Results.Ok(managers);
     }
 }

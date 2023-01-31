@@ -6,6 +6,7 @@ public class TokenPost
     public static string[] Methods => new[] { HttpMethod.Post.ToString() };
     public static Delegate Handle => Action;
 
+    [AllowAnonymous]
     public static async Task<IResult> Action(LoginRequest request, IConfiguration configuration, UserManager<IdentityUser> userManager)
     {
         var userEmail = userManager.FindByEmailAsync(request.Email).Result;
@@ -19,19 +20,21 @@ public class TokenPost
             return Results.BadRequest("Senha Inválida!");
         }
 
-        var key = Encoding.ASCII.GetBytes(configuration["JwtBearerTokenSettings:"]);
+        var key = Encoding.ASCII.GetBytes(configuration["JwtBearerTokenSettings:SecretKey"]);
 
         var tokenDescriptor = new SecurityTokenDescriptor
         {
             Subject = new ClaimsIdentity(new Claim[]
             {
-                new Claim(ClaimTypes.Email, request.Email)
+                new Claim(ClaimTypes.Email, request.Email),
+                new Claim("ManagerCode", "Teste")
             }),
 
             SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature),
 
             Audience = configuration["JwtBearerTokenSettings:Audience"],
-            Issuer = configuration["JwtBearerTokenSettings:Issuer"]
+            Issuer = configuration["JwtBearerTokenSettings:Issuer"]          
+            
         };
 
         var tokenHandler = new JwtSecurityTokenHandler();

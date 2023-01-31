@@ -1,6 +1,23 @@
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddAuthorization();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSqlServer<ApplicationDbContext>(builder.Configuration["ConnectionString:PAMDb"]);
+builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
+{
+    options.Password.RequireNonAlphanumeric = false;
+    options.Password.RequireUppercase = false;
+
+}).AddEntityFrameworkStores<ApplicationDbContext>();
+
+builder.Services.AddAuthorization(options =>
+{
+    options.FallbackPolicy = new AuthorizationPolicyBuilder()
+    .AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme)
+    .RequireAuthenticatedUser()
+    .Build();
+
+    options.AddPolicy("ManagerPolicy", p => p.RequireAuthenticatedUser().RequireClaim("ManagerCode"));
+});
 
 builder.Services.AddAuthentication(x =>
 {
@@ -12,6 +29,7 @@ builder.Services.AddAuthentication(x =>
     {
         ValidateActor = true,
         ValidateAudience = true,
+        ValidateIssuer = true,
         ValidateLifetime = true,
         ValidateIssuerSigningKey = true,
         ValidIssuer = builder.Configuration["JwtBearerTokenSettings:Issuer"],
@@ -20,15 +38,7 @@ builder.Services.AddAuthentication(x =>
     };
 });
 
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSqlServer<ApplicationDbContext>(builder.Configuration["ConnectionString:PAMDb"]);
-builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
-{
-    options.Password.RequireNonAlphanumeric = false;
-    options.Password.RequireUppercase = false;
-
-}).AddEntityFrameworkStores<ApplicationDbContext>();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(); 
 
 var app = builder.Build();
 
