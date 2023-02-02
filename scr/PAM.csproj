@@ -15,8 +15,8 @@
 		<Using Include="System.Text" />
 		<Using Include="Microsoft.IdentityModel.Tokens" />
 		<Using Include="System.IdentityModel.Tokens.Jwt" />
-		<Using Include="Microsoft.AspNetCore.Authentication.JwtBearer"/>
-		<Using Include="Microsoft.AspNetCore.Authorization"/>
+		<Using Include="Microsoft.AspNetCore.Authentication.JwtBearer" />
+		<Using Include="Microsoft.AspNetCore.Authorization" />
 
 		<Using Include="PAM.Infra.Data" />
 		<Using Include="PAM.Domain.Albums" />
@@ -27,6 +27,7 @@
 		<Using Include="PAM.Endpoints.Albums" />
 		<Using Include="PAM.Endpoints.Managers" />
 		<Using Include="PAM.Endpoints.Security" />
+		<Using Include="PAM.Endpoints.Users"/>
 	</ItemGroup>
 
   <ItemGroup>

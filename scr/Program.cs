@@ -82,6 +82,8 @@ app.MapMethods(GameDelete.Template, GameDelete.Methods, GameDelete.Handle);
 app.MapMethods(ManagerPost.Template, ManagerPost.Methods, ManagerPost.Handle);
 app.MapMethods(ManagerGetAll.Template, ManagerGetAll.Methods, ManagerGetAll.Handle);
 
+app.MapMethods(UserPost.Template, UserPost.Methods, UserPost.Handle);
+
 app.MapMethods(TokenPost.Template, TokenPost.Methods, TokenPost.Handle);
 
 app.Run();

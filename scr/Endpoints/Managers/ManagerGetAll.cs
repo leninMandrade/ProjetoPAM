@@ -6,7 +6,7 @@ public class ManagerGetAll
     public static string[] Methods => new[] { HttpMethod.Get.ToString() };
     public static Delegate Handle => Action;
 
-    [Authorize(Policy = "ManagerPolicy")]
+    [Authorize(Policy = "ManagerPolicy")] // Alterar o Endpoint para consultar os Usuários
     public static async Task<IResult> Action(UserManager<IdentityUser> users)
     {
         var search = users.Users.ToList();
